@@ -112,8 +112,9 @@
 			display: block;
 
 			span {
-				color: #888888;
 				display: inline;
+				color: #888888;
+				transition: color 1s ease .1s;
 			}
 		}
 
