@@ -32,10 +32,13 @@
 			overflow: hidden;
 			position: relative;
 			align-self: flex-start;
-			width: 8rem;
+
+			@media screen and (max-width: 600px) {
+				width: unset;
+			}
 
 			&::before {
-				content: 'Info ✴';
+				content: 'Info ✶';
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -56,6 +59,7 @@
 				transform: translateY(100%);
 				transition: transform .3s ease;
 				width: 100%;
+				display: flex;
 			}
 
 			&:hover{
@@ -91,6 +95,11 @@
 						}
 					}
 				}
+
+				@media screen and (max-width: 600px) {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+				}
 			}
 		}
 
@@ -107,5 +116,15 @@
 				align-self: flex-end;
 			}
 		}
+
+		@media screen and (max-width: 600px) {
+			flex-direction: column;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		height: unset;
+		padding: 1rem;
+		gap: 2rem;
 	}
 }

@@ -11,15 +11,17 @@ document.querySelector('#copy-email').addEventListener('click', (e) => {
 })
 
 document.querySelector('#info-button').addEventListener('click', (e) => {
-	document.querySelector('#info').scrollIntoView()
+	document.querySelector('#info').scrollIntoView({ behavior: 'smooth' })
 })
 
 // magnetize
 window.addEventListener('DOMContentLoaded', (e) => {
-	new MagneticElement('html body #info .links a:nth-child(1)');
-	new MagneticElement('html body #info .links a:nth-child(2)');
-	new MagneticElement('html body #info .links a:nth-child(3)');
-	new MagneticElement('html body #info .links a:nth-child(4)');
+	if (innerWidth > 600) {
+		new MagneticElement('html body #info .links a:nth-child(1)');
+		new MagneticElement('html body #info .links a:nth-child(2)');
+		new MagneticElement('html body #info .links a:nth-child(3)');
+		new MagneticElement('html body #info .links a:nth-child(4)');
+	}
 })
 // magnetize end
 
@@ -27,14 +29,16 @@ window.addEventListener('DOMContentLoaded', (e) => {
 // hide on scroll
 let observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
-		if (entry.intersectionRatio > .9) {
-      document.querySelectorAll('.hide-on-scroll').forEach(el => {
-				el.classList.add('activate')
-			})
-    } else {
-      document.querySelectorAll('.hide-on-scroll').forEach(el => {
-				el.classList.remove('activate')
-			})
+		if (innerWidth > 600) {
+			if (entry.intersectionRatio > .9) {
+				document.querySelectorAll('.hide-on-scroll').forEach(el => {
+					el.classList.add('activate')
+				})
+			} else {
+				document.querySelectorAll('.hide-on-scroll').forEach(el => {
+					el.classList.remove('activate')
+				})
+			}
 		}
   });
 }, { threshold: .9 });

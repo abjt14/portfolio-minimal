@@ -2,17 +2,27 @@ const canvasDraw = () => {
 	let x;
 	let y;
 	let transparencyPercentage = 100;
+
 	const bgcCanvasHelper = document.querySelector('#bgc-canvas-helper')
 	const colorArray = ['#00dcff', '#ffc521', '#ff5851', '#ffffff'];
+
 	let selectedColor = colorArray[0];
 	let drawing = true;
 	let bgcChangeRunning = false;
+
 	const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 	const canvas = document.querySelector('canvas');
 	const context = canvas.getContext('2d');
-	canvas.height = innerHeight*.75;
-	canvas.width = innerWidth;
+
+	if (!isMobile) {
+		canvas.height = innerHeight*.75;
+		canvas.width = innerWidth;
+	} else {
+		canvas.height = innerHeight;
+		canvas.width = innerWidth;
+	}
+
 	window.addEventListener('resize', (e) => {
 		if (!isMobile) {
 			canvas.height = innerHeight*.75;
@@ -107,23 +117,19 @@ const canvasDraw = () => {
 		}
 	})
 
-	document.querySelector('#intro').addEventListener('touchstart', (e) => {
-		if (isMobile) {
-			let touch = e.touches[0];
-			x = touch.clientX;
-			y = touch.clientY;
-		}
+	document.addEventListener('touchstart', (e) => {
+		let touch = e.touches[0];
+		x = touch.clientX;
+		y = touch.clientY;
 	})
 
-	document.querySelector('#intro').addEventListener('touchmove', (e) => {
-		if (isMobile) {
-			let touch = e.touches[0];
-			const mouseEvent = new MouseEvent("mousemove", {
-				clientX: touch.clientX,
-				clientY: touch.clientY
-			});
-			document.dispatchEvent(mouseEvent);
-		}
+	document.addEventListener('touchmove', (e) => {
+		let touch = e.touches[0];
+		const mouseEvent = new MouseEvent("mousemove", {
+			clientX: touch.clientX,
+			clientY: touch.clientY
+		});
+		document.querySelector('#intro').dispatchEvent(mouseEvent);
 	})
 
 	const transparency = () => {
