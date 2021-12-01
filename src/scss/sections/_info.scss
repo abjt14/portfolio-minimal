@@ -1,0 +1,111 @@
+#info {
+	height: 85vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1rem;
+	position: relative;
+	padding: .75rem;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 1);
+	transition: color 1s ease;
+
+	.row {
+		display: flex;
+    gap: 2rem;
+
+		> div, > h4 {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			font-weight: 300;
+			font-size: 1.5rem;
+			color: inherit;
+			text-align: left;
+		}
+
+		button {
+			font-weight: 300;
+			font-size: 1.5rem;
+			color: inherit;
+			text-align: left;
+			overflow: hidden;
+			position: relative;
+			align-self: flex-start;
+			width: 8rem;
+
+			&::before {
+				content: 'Info ✴';
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: inherit;
+				background-color: rgba(0, 0, 0, 1);
+				transform: translateY(0%);
+				transition: transform .3s ease;
+				width: 100%;
+			}
+
+			&::after {
+				content: 'About Me ↓';
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: inherit;
+				background-color: rgba(0, 0, 0, 1);
+				transform: translateY(100%);
+				transition: transform .3s ease;
+				width: 100%;
+			}
+
+			&:hover{
+				&::before {
+					transform: translateY(-100%);
+				}
+				&::after {
+					transform: translateY(0%);
+				}
+			}
+		}
+
+		.links-cont {
+			.links {
+				display: flex;
+				gap: 2rem;
+
+				a {
+					font-weight: 300;
+					font-size: 1.5rem;
+					color: inherit;
+					text-align: left;
+					text-decoration: none;
+					transition: filter .3s ease-out;
+				}
+
+				&:hover {
+					a {
+						filter: blur(.125rem);
+
+						&:hover {
+							filter: blur(0);
+						}
+					}
+				}
+			}
+		}
+
+		.desc {
+			display: block;
+
+			span {
+				display: inline;
+			}
+		}
+
+		&:nth-child(2) {
+			h4 {
+				align-self: flex-end;
+			}
+		}
+	}
+}
