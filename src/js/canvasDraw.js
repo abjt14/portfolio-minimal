@@ -62,55 +62,11 @@ const canvasDraw = () => {
 			transparencyPercentage = transparency()
 			if (!isMobile) {
 				if (transparencyPercentage <= 40) {
-					document.querySelector('#info').style.color = selectedColor;
-					if (!bgcChangeRunning) {
-						bgcChangeRunning = true;
-						drawing = false;
-						bgcCanvasHelper.style.top = y + 'px';
-						bgcCanvasHelper.style.left = x + 'px';
-						bgcCanvasHelper.style.backgroundColor = selectedColor;
-						bgcCanvasHelper.style.height = innerHeight > innerWidth ? `${innerHeight*2.5}px` : `${innerWidth*2.5}px`;
-						bgcCanvasHelper.style.width = innerHeight > innerWidth ? `${innerHeight*2.5}px` : `${innerWidth*2.5}px`;
-						bgcCanvasHelper.style.transform = 'translate(-50%, -50%) scale(1)';
-
-						setTimeout(() => {
-							document.body.style.backgroundColor = selectedColor;
-							document.documentElement.style.backgroundColor = selectedColor;
-							bgcCanvasHelper.style.transform = 'translate(-50%, -50%) scale(0)';
-							bgcCanvasHelper.style.height = '0px';
-							bgcCanvasHelper.style.width = '0px';
-							context.clearRect(0, 0, canvas.width, canvas.height);
-							colorSwitcher();
-							drawing = true;
-							bgcChangeRunning = false;
-						}, 1000);
-					}
+					beforeColorSwitch();
 				}
 			} else {
 				if (transparencyPercentage <= 70) {
-					document.querySelector('#info').style.color = selectedColor;
-					if (!bgcChangeRunning) {
-						bgcChangeRunning = true;
-						drawing = false;
-						bgcCanvasHelper.style.top = y + 'px';
-						bgcCanvasHelper.style.left = x + 'px';
-						bgcCanvasHelper.style.backgroundColor = selectedColor;
-						bgcCanvasHelper.style.height = innerHeight > innerWidth ? `${innerHeight*2.5}px` : `${innerWidth*2.5}px`;
-						bgcCanvasHelper.style.width = innerHeight > innerWidth ? `${innerHeight*2.5}px` : `${innerWidth*2.5}px`;
-						bgcCanvasHelper.style.transform = 'translate(-50%, -50%) scale(1)';
-
-						setTimeout(() => {
-							document.body.style.backgroundColor = selectedColor;
-							document.documentElement.style.backgroundColor = selectedColor;
-							bgcCanvasHelper.style.transform = 'translate(-50%, -50%) scale(0)';
-							bgcCanvasHelper.style.height = '0px';
-							bgcCanvasHelper.style.width = '0px';
-							context.clearRect(0, 0, canvas.width, canvas.height);
-							colorSwitcher();
-							drawing = true;
-							bgcChangeRunning = false;
-						}, 1000);
-					}
+					beforeColorSwitch();
 				}
 			}
 		} else {
@@ -118,6 +74,32 @@ const canvasDraw = () => {
 			y = e.clientY;
 		}
 	})
+
+	const beforeColorSwitch = () => {
+		document.querySelector('#info').style.color = selectedColor;
+		if (!bgcChangeRunning) {
+			bgcChangeRunning = true;
+			drawing = false;
+			bgcCanvasHelper.style.top = y + 'px';
+			bgcCanvasHelper.style.left = x + 'px';
+			bgcCanvasHelper.style.backgroundColor = selectedColor;
+			bgcCanvasHelper.style.height = innerHeight > innerWidth ? `${innerHeight*2.5}px` : `${innerWidth*2.5}px`;
+			bgcCanvasHelper.style.width = innerHeight > innerWidth ? `${innerHeight*2.5}px` : `${innerWidth*2.5}px`;
+			bgcCanvasHelper.style.transform = 'translate(-50%, -50%) scale(1)';
+
+			setTimeout(() => {
+				document.body.style.backgroundColor = selectedColor;
+				document.documentElement.style.backgroundColor = selectedColor;
+				bgcCanvasHelper.style.transform = 'translate(-50%, -50%) scale(0)';
+				bgcCanvasHelper.style.height = '0px';
+				bgcCanvasHelper.style.width = '0px';
+				context.clearRect(0, 0, canvas.width, canvas.height);
+				colorSwitcher();
+				drawing = true;
+				bgcChangeRunning = false;
+			}, 1000);
+		}
+	}
 
 	document.addEventListener('touchstart', (e) => {
 		let touch = e.touches[0];
