@@ -75,6 +75,7 @@ const canvasDraw = () => {
 
 						setTimeout(() => {
 							document.body.style.backgroundColor = selectedColor;
+							document.documentElement.style.backgroundColor = selectedColor;
 							bgcCanvasHelper.style.transform = 'translate(-50%, -50%) scale(0)';
 							bgcCanvasHelper.style.height = '0px';
 							bgcCanvasHelper.style.width = '0px';
@@ -100,6 +101,7 @@ const canvasDraw = () => {
 
 						setTimeout(() => {
 							document.body.style.backgroundColor = selectedColor;
+							document.documentElement.style.backgroundColor = selectedColor;
 							bgcCanvasHelper.style.transform = 'translate(-50%, -50%) scale(0)';
 							bgcCanvasHelper.style.height = '0px';
 							bgcCanvasHelper.style.width = '0px';
