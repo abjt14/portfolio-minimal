@@ -1,5 +1,5 @@
 # portfolio
-This is my developer portfolio.
+This is my developer portfolio (minimal).
 
 
 ## Technologies Used
