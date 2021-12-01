@@ -77,6 +77,16 @@ const canvasDraw = () => {
 
 	const beforeColorSwitch = () => {
 		document.querySelector('#info').style.color = selectedColor;
+		if (selectedColor !== '#ffffff') {
+			document.querySelectorAll('#info .row .desc span').forEach(e => {
+				e.style.color = selectedColor;
+			})
+		} else {
+			document.querySelectorAll('#info .row .desc span').forEach(e => {
+				e.style.color = '#a1a1a1';
+			})
+		}
+
 		if (!bgcChangeRunning) {
 			bgcChangeRunning = true;
 			drawing = false;
