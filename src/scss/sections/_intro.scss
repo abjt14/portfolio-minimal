@@ -52,12 +52,12 @@
 				}
 
 				&::before {
-					content: 'abhijeetsinghmain@gmail.com';
+					content: 'Copy @ to Clipboard';
 					transform: translateY(0%);
 				}
 
 				&::after {
-					content: 'Copy @ to Clipboard';
+					content: 'abhijeetsinghmain@gmail.com';
 					transform: translateY(100%);
 				}
 
@@ -82,6 +82,59 @@
 
 			@media screen and (max-width: 600px) {
 				align-self: unset;
+			}
+		}
+
+		.subtext {
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+			gap: .5rem;
+
+			span {
+				flex: 1;
+
+				&:nth-child(2) {
+					flex: 1;
+					align-self: flex-end;
+					text-align: right;
+
+					> button {
+						flex: 1;
+						text-align: left;
+						overflow: hidden;
+						position: relative;
+						align-self: flex-start;
+						color: transparent;
+
+						&::before, &::after {
+							position: absolute;
+							top: 0;
+							right: 0;
+							color: #000;
+							transition: transform .3s ease;
+						}
+
+						&::before {
+							content: 'Works ⚈';
+							transform: translateY(0%);
+						}
+
+						&::after {
+							content: 'Projects ⚈';
+							transform: translateY(100%);
+						}
+
+						&:hover{
+							&::before {
+								transform: translateY(-100%);
+							}
+							&::after {
+								transform: translateY(0%);
+							}
+						}
+					}
+				}
 			}
 		}
 

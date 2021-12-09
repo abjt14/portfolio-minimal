@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		.to('#intro .row:nth-child(1) .title', { duration: .8, y: 0, autoAlpha: 1, ease: 'back.out(1)', force3D: true })
 		.to('#intro .row:nth-child(1) .subtitle', { duration: .8, y: 0, autoAlpha: 1, ease: 'back.out(1)', force3D: true }, "-=.6")
 		.to('#intro .row:nth-child(2) .links', { duration: .8, y: 0, autoAlpha: 1, ease: 'back.out(1)', force3D: true }, "-=.6")
-		.to('#intro .row:nth-child(2) .subtext span', { duration: .8, y: 0, autoAlpha: 1, ease: 'back.out(1)', force3D: true }, "-=.6")
+		.to('#intro .row:nth-child(2) .subtext span', { duration: .8, y: 0, stagger: .2, autoAlpha: 1, ease: 'back.out(1)', force3D: true }, "-=.6")
 		.to('#info', { duration: 1, y: 0, ease: 'back.out(1)', force3D: true })
 		.to('#intro .row:nth-child(2)', { duration: 1, y: 0, ease: 'back.out(1)', force3D: true }, "-=1")
 		.to('html, body', { duration: 0, overflowY: 'auto' })
@@ -48,6 +48,27 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		new MagneticElement('html body #info .links a:nth-child(3)');
 		new MagneticElement('html body #info .links a:nth-child(4)');
 		// magnetize end
+
+
+		// projects listing item hover
+		gsap.to('#projects .project-image-cont', { duration: 0, opacity: 0 })
+
+		document.querySelector('#projects .listing').addEventListener('mouseenter', (e) => {
+			gsap.to('#projects .project-image-cont', { duration: .3, opacity: 1, ease: 'power1.out' })
+		})
+
+		document.querySelector('#projects .listing').addEventListener('mouseleave', (e) => {
+			gsap.to('#projects .project-image-cont', { duration: .3, opacity: 0, ease: 'power1.out' })
+		})
+
+		document.querySelectorAll('#projects .listing a.item').forEach(element => {
+			const imageName = element.querySelector('.number').innerText + '.webp';
+
+			element.addEventListener('mouseenter', (e) => {
+				document.querySelector('#projects .project-image-cont img').setAttribute('src', `./src/images/projects/${imageName}`)
+			})
+		})
+		// projects listing item hover end
 	} else {
 		// gsap after init
 		let timelineInit = gsap.timeline({ delay: .5 });
@@ -55,7 +76,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		timelineInit
 		.to('#intro .row:nth-child(1) .title', { duration: .8, y: 0, autoAlpha: 1, ease: 'back.out(1)', force3D: true })
 		.to('#intro .row:nth-child(1) .subtitle', { duration: .8, y: 0, autoAlpha: 1, ease: 'back.out(1)', force3D: true }, "-=.6")
-		.to('#intro', { duration: 1.2, minHeight: '80vh', ease: 'back.out(1)', force3D: true }, "-=.8")
+		.to('#intro', { duration: 1.2, minHeight: '80vh', ease: 'back.out(1)', force3D: true }, "-=.4")
 		.to('#intro .row:nth-child(2)', { duration: .8, y: 0, autoAlpha: 1, ease: 'back.out(1)', force3D: true }, "-=1.2")
 		.to('html, body', { duration: 0, overflowY: 'auto' })
 		// gsap after init end
@@ -103,4 +124,19 @@ window.addEventListener('DOMContentLoaded', (e) => {
 	// canvas draw
 	canvasDraw()
 	// canvas draw end
+
+
+	// show projects
+	const projectsCont = document.querySelector('#projects');
+	document.querySelector('#projects-button').addEventListener('click', (e) => {
+		projectsCont.classList.add('active');
+		document.querySelector('html').style.overflowY = 'hidden';
+		document.querySelector('body').style.overflowY = 'hidden';
+	})
+	document.querySelector('#close-projects-button').addEventListener('click', (e) => {
+		projectsCont.classList.remove('active');
+		document.querySelector('html').style.overflowY = 'auto';
+		document.querySelector('body').style.overflowY = 'auto';
+	})
+	// show projects end
 })
