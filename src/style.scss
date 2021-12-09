@@ -5,6 +5,7 @@
 html {
 	body {
 		@import './scss/bg/bg';
+		@import './scss/sections/canvas';
 		@import './scss/sections/intro';
 		@import './scss/sections/info';
 	}
@@ -20,5 +21,13 @@ html, body {
 
 	@media screen and (max-width: 600px) {
 		font-size: 4.25vw;
+	}
+
+	.mobile-show {
+		display: none;
+
+		@media screen and (max-width: 600px) {
+			display: block;
+		}
 	}
 }

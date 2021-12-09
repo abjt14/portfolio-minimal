@@ -1,5 +1,5 @@
 #intro {
-	height: 75vh;
+	height: 90vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -21,24 +21,19 @@
 			}
 		}
 
-		> h1, > h2, > h3, > div {
+		> * {
 			flex: 1;
 			display: flex;
 			flex-direction: column;
 			font-weight: 400;
 			font-size: 1.5rem;
+			text-align: left;
 		}
 
 		.links {
-			flex: 1;
-			display: flex;
 			align-self: flex-end;
 			gap: 2rem;
-			flex-direction: column;
-			font-weight: 300;
-			font-size: 1.5rem;
-			color: #fff;
-			text-align: left;
+			color: transparent;
 
 			> button {
 				flex: 1;
@@ -48,35 +43,27 @@
 				align-self: flex-start;
 				color: transparent;
 
-				&::before {
-					content: 'abhijeetsinghmain@gmail.com';
+				&::before, &::after, &.copied::after {
 					position: absolute;
 					top: 0;
 					left: 0;
 					color: #000;
-					transform: translateY(0%);
 					transition: transform .3s ease;
+				}
+
+				&::before {
+					content: 'abhijeetsinghmain@gmail.com';
+					transform: translateY(0%);
 				}
 
 				&::after {
 					content: 'Copy @ to Clipboard';
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					color: #000;
 					transform: translateY(100%);
-					transition: transform .3s ease;
 				}
 
 				&.copied::after {
 					content: 'Copied @ to Clipboard';
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
 					transform: translateY(100%);
-					transition: transform .3s ease;
 				}
 
 				&:hover{
@@ -99,11 +86,12 @@
 		}
 
 		.hide-on-scroll {
-			will-change: opacity filter;
-			transition: opacity .3s ease-out, filter .3s ease-out;
 			filter: blur(0px);
 			opacity: 1;
+			will-change: opacity filter;
+			transition: opacity .3s ease-out, filter .3s ease-out;
 		}
+
 		.hide-on-scroll.activate {
 			filter: blur(20px);
 			opacity: 0;
@@ -116,7 +104,8 @@
 	}
 
 	@media screen and (max-width: 600px) {
-		height: 70vh;
+		height: unset;
+		min-height: 80vh;
 		padding: 1rem;
 		gap: 2rem;
 	}

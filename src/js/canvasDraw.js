@@ -1,3 +1,5 @@
+import { gsap } from "gsap";
+
 const canvasDraw = () => {
 	let x;
 	let y;
@@ -15,19 +17,12 @@ const canvasDraw = () => {
 	const canvas = document.querySelector('canvas');
 	const context = canvas.getContext('2d');
 
-	if (!isMobile) {
-		canvas.height = innerHeight*.75;
-		canvas.width = innerWidth;
-	} else {
-		canvas.height = innerHeight;
-		canvas.width = innerWidth;
-	}
+	canvas.height = innerHeight;
+	canvas.width = innerWidth;
 
 	window.addEventListener('resize', (e) => {
-		if (!isMobile) {
-			canvas.height = innerHeight*.75;
-			canvas.width = innerWidth;
-		}
+		canvas.height = innerHeight;
+		canvas.width = innerWidth;
 	})
 
 	document.querySelector('#intro').addEventListener('mousemove', (e) => {
@@ -61,11 +56,11 @@ const canvasDraw = () => {
 
 			transparencyPercentage = transparency()
 			if (!isMobile) {
-				if (transparencyPercentage <= 40) {
+				if (transparencyPercentage <= 50) {
 					beforeColorSwitch();
 				}
 			} else {
-				if (transparencyPercentage <= 70) {
+				if (transparencyPercentage <= 75) {
 					beforeColorSwitch();
 				}
 			}
@@ -76,15 +71,16 @@ const canvasDraw = () => {
 	})
 
 	const beforeColorSwitch = () => {
-		document.querySelector('#info').style.color = selectedColor;
 		if (selectedColor !== '#ffffff') {
-			document.querySelectorAll('#info .row .desc span').forEach(e => {
-				e.style.color = selectedColor;
-			})
+			gsap.to('#info .row button', { duration: 1, delay: .1, color: selectedColor })
+			gsap.to('#info .row .links-cont .links a', { duration: 1, delay: .1, color: selectedColor })
+			gsap.to('#info .row .desc span', { duration: 1, delay: .1, color: selectedColor })
+			gsap.to('#info .row:nth-child(2) div:nth-child(1) span', { duration: 1, delay: .1, color: selectedColor })
 		} else {
-			document.querySelectorAll('#info .row .desc span').forEach(e => {
-				e.style.color = '#a1a1a1';
-			})
+			gsap.to('#info .row button', { duration: 1, delay: .1, color: '#ffffff' })
+			gsap.to('#info .row .links-cont .links a', { duration: 1, delay: .1, color: '#ffffff' })
+			gsap.to('#info .row .desc span', { duration: 1, delay: .1, color: '#a1a1a1' })
+			gsap.to('#info .row:nth-child(2) div:nth-child(1) span', { duration: 1, delay: .1, color: '#a1a1a1' })
 		}
 
 		if (!bgcChangeRunning) {

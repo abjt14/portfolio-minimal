@@ -1,0 +1,20 @@
+canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+
+#bgc-canvas-helper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 0;
+	width: 0;
+	z-index: 1;
+	background-color: #ffffff;
+	border-radius: 50%;
+	transform-origin: center center;
+	transform: translate(-50%, -50%) scale(0);
+	transition: height 1s ease, width 1s ease;
+}

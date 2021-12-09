@@ -56,29 +56,6 @@
 		#loader.loaded {
 			opacity: 0;
 		}
-
-		canvas {
-			position: fixed;
-			top: 0;
-			left: 0;
-			height: 75vh;
-			width: 100vw;
-			z-index: 0;
-		}
-
-		#bgc-canvas-helper {
-			position: fixed;
-			top: 0;
-			left: 0;
-			height: 0;
-			width: 0;
-			z-index: 1;
-			background-color: #ffffff;
-			border-radius: 50%;
-			transform-origin: center center;
-			transform: translate(-50%, -50%) scale(0);
-			transition: height 1s ease, width 1s ease;
-		}
 	</style>
 </head>
 <body>
@@ -86,22 +63,22 @@
 	<!-- <div id="bg"></div> -->
 	<div id="intro">
 		<div class="row">
-			<h1>
+			<h1 class="title">
 				<span>Abhijeet Singh</span>
 				<span>Web Developer</span>
 			</h1>
-			<h2>
-				<span>Based in Vancouver</span>
-				<span>Looking for opportunities</span>
+			<h2 class="subtitle">
+				I build engaging experiences for my audience with pixel-perfect and performant applications.
 			</h2>
 		</div>
 		<div class="row">
 			<div class="links">
 				<button id="copy-email" class="hide-on-scroll">abhijeetsinghmain@gmail.com</button>
 			</div>
-			<h3 class="hide-on-scroll">
-				I build engaging experiences for my audience with pixel-perfect and performant applications.
-			</h3>
+			<div class="subtext hide-on-scroll">
+				<span>Based in Vancouver</span>
+				<span>Looking for opportunities</span>
+			</div>
 		</div>
 	</div>
 	<div id="info">
@@ -112,35 +89,36 @@
 			<div class="links-cont">
 				<div class="links">
 					<a href="mailto:abhijeetsinghmain@gmail.com">
-						&#9679; email
+						Email •
 					</a>
 					<a href="https://github.com/abjt14" target="_blank">
-						&#9679; github
+						Github •
 					</a>
 					<a href="https://linkedin.com/in/abjt14" target="_blank">
-						&#9679; linkedin
+						LinkedIn •
 					</a>
 					<a href="https://codepen.io/abjt14" target="_blank">
-						&#9679; codepen
+						Codepen •
 					</a>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<h4>
+			<div>
+				<span class="mobile-show">Hi! I am Abhijeet.</span>
 				Vancouver based developer who loves to add creativity and life into his work.
 				<br><br>
 				I have a Bachelor's degree and a PG diploma in my field and have worked as a web developer for over an
 				year.
-			</h4>
-			<h4 class="desc">
+			</div>
+			<div class="desc">
 				My go-to tech stack is <span>Vanilla JavaScript</span> and <span>Sass</span> with <span>Webpack</span> for my
 				projects.
 				<br><br>
 				Other technologies and tools I have recently used are <span>Figma</span>, <span>Canvas API</span>,
 				<span>React</span>, <span>React Native</span>, <span>GSAP</span>, <span>Node.js</span>, <span>GraphQL</span>,
 				<span>MongoDB</span>, and <span>Shell Scripting</span>.
-			</h4>
+			</div>
 		</div>
 	</div>
 	<canvas id="canvas"></canvas>
